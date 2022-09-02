@@ -1,8 +1,11 @@
 package com.example.pruebatalana.data.model
 
-class PostsProvider {
+import javax.inject.Inject
+import javax.inject.Singleton
 
-    companion object{
+@Singleton
+class PostsProvider @Inject constructor() {
+
         var posts:List<PostsModel> = emptyList()
-    }
+
 }

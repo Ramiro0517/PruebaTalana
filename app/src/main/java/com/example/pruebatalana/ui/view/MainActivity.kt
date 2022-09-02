@@ -7,11 +7,12 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.pruebatalana.databinding.ActivityMainBinding
 import com.example.pruebatalana.ui.viewModel.PostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var  binding : ActivityMainBinding
-
     private val postViewModel: PostsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

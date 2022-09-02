@@ -5,13 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pruebatalana.data.model.PostsModel
 import com.example.pruebatalana.domain.GetPostsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PostsViewModel: ViewModel() {
+@HiltViewModel
+class PostsViewModel @Inject constructor(
+    private val getPostsUseCase : GetPostsUseCase
+    ): ViewModel() {
 
     val postsModel = MutableLiveData<PostsModel>()
 
-    var getPostsUseCase = GetPostsUseCase()
 
     fun onCreate() {
           viewModelScope.launch {
