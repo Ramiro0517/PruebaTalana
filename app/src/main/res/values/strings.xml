@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PruebaTalana</string>
+    <string name="ingresar_usuario">Ingrese su usuario</string>
+    <string name="ingresar_password">Ingrese su contraseña</string>
+    <string name="ingresar">Ingresar</string>
+</resources>
