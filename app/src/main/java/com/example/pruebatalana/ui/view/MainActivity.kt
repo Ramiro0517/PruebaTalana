@@ -1,5 +1,6 @@
 package com.example.pruebatalana.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -25,5 +26,10 @@ class MainActivity : AppCompatActivity() {
             //binding.btnLogin
 
         })
+
+        binding.btnLogin.setOnClickListener {
+            val i = Intent(this,HomeActivity::class.java)
+            startActivity(i)
+        }
     }
 }
