@@ -4,13 +4,12 @@ import com.example.pruebatalana.core.RetrofitHelp
 import com.example.pruebatalana.data.model.PostsModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+class   PostsService () {
 
-class   PostsService @Inject constructor(private val api: PostsApiClient ) {
-
+    private val retrofit = RetrofitHelp.getRetrofit()
       suspend fun getPosts():List<PostsModel>{
         return withContext(Dispatchers.IO){
-            val response = api.getAllPosts()
+            val response = retrofit.create(PostsApiClient::class.java).getAllPosts()
             response.body() ?: emptyList()
         }
 

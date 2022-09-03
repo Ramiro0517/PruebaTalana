@@ -10,9 +10,8 @@ import com.example.pruebatalana.adapters.PostsAdapter
 import com.example.pruebatalana.data.model.PostsModel
 import com.example.pruebatalana.data.model.PostsProvider
 import com.example.pruebatalana.databinding.ActivityHomeBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var  homeBinding: ActivityHomeBinding
