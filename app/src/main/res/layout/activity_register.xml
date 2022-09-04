@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.MainActivity">
-
-
+    tools:context=".ui.view.RegisterActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,36 +21,26 @@
             android:src="@drawable/talana" />
 
         <EditText
-            android:id="@+id/edtUsuario"
+            android:id="@+id/edtRegisterUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/edittext_login"
-            android:hint="@string/ingresar_usuario"
+            android:hint="@string/registrar_usuario"
             android:padding="12dp" />
 
         <EditText
-            android:id="@+id/edtPassword"
+            android:id="@+id/edtRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/edittext_login"
-            android:hint="@string/ingresar_password"
+            android:hint="@string/registrar_password"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/eye_24"
             android:padding="12dp" />
 
         <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#1F2DD7"
-            android:text="@string/ingresar"
-            android:padding="12dp"
-            android:textAllCaps="true" />
-        <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnRegisterBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -62,5 +49,7 @@
             android:padding="12dp"
             android:textAllCaps="true" />
 
+
     </LinearLayout>
+
 </RelativeLayout>
