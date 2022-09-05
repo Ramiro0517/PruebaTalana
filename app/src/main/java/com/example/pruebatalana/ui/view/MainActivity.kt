@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
@@ -16,6 +17,7 @@ import com.example.pruebatalana.databinding.ActivityMainBinding
 import com.example.pruebatalana.ui.viewModel.PostsViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.Observer
+import com.example.pruebatalana.PruebaTalanaApp.Companion.prefs
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,11 +39,31 @@ class MainActivity : AppCompatActivity() {
         })*/
         binding.btnLogin.setOnClickListener {
           login()
+            //startActivity(Intent(this,HomeActivity::class.java ))
+           // checkUserValues()
         }
         binding.btnRegister.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java)
-            startActivity(i)
+            startActivity(Intent(this,RegisterActivity::class.java ))
         }
+        if (prefs.getUser().isNotEmpty()) {
+            showAlert()
+        }
+    }
+
+    private fun checkUserValues(){
+            startActivity(Intent(this,HomeActivity::class.java ))
+    }
+
+    private fun showAlert (){
+        val userName = prefs.getUser()
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Bienvenido $userName")
+            .setMessage("Usted ya inició sesión anteriormente")
+            .setPositiveButton("Ingresar"){ _, it->
+                checkUserValues()
+            }
+            .create()
+            .show()
     }
     private fun login() {
         lifecycleScope.launch {
@@ -55,9 +77,9 @@ class MainActivity : AppCompatActivity() {
                 val userdao: UserDao = room1.userDao()
                val a = userdao.getUsers(email, password)
                 if (a !=null) {
-                    val i = Intent(applicationContext, HomeActivity::class.java)
-                    Toast.makeText(applicationContext, "Bienvenido!!", Toast.LENGTH_LONG).show()
-                    startActivity(i)
+                    prefs.saveGmail(email)
+                    prefs.savePassword(password)
+                   goToHome()
                 }
                 else {
                     Toast.makeText(applicationContext, "Sus credenciales no son las correctas", Toast.LENGTH_LONG).show()
@@ -69,6 +91,11 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    fun goToHome(){
+        Toast.makeText(this, "Bienvenido!!", Toast.LENGTH_LONG).show()
+        startActivity(Intent(this,HomeActivity::class.java ))
+    }
+
     fun String.isEmailValid():Boolean{ //validacion para saber si el usuario ingreso el formato adecuado
         return !TextUtils.isEmpty(this)&& android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }

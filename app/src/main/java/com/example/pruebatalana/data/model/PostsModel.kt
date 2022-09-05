@@ -5,4 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class PostsModel (@SerializedName("id") val id :Int,
                        @SerializedName("title") val tittle: String,
                        @SerializedName("image") val image : String,
-                       @SerializedName("description") val description:String)
+                       @SerializedName("description") val description:String,
+                       @SerializedName("date") val date:String,
+                       @SerializedName("published") val published:String)
+
+
+

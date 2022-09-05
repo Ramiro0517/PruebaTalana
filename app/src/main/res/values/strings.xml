@@ -6,4 +6,6 @@
     <string name="registrar_password">Registre su contraseña</string>
     <string name="ingresar">Ingresar</string>
     <string name="registrar">Registrarse</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="bienvenido">Bienvenido</string>
 </resources>
