@@ -34,15 +34,9 @@ class MainActivity : AppCompatActivity() {
             binding.edtUsuario.text= it.tittle
            // binding.edtPassword
             //binding.btnLogin
-
         })*/
-
-
         binding.btnLogin.setOnClickListener {
-          //login()
-            val i = Intent(applicationContext, HomeActivity::class.java)
-            Toast.makeText(applicationContext, "Todo ok ", Toast.LENGTH_LONG).show()
-            startActivity(i)
+          login()
         }
         binding.btnRegister.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
@@ -59,12 +53,15 @@ class MainActivity : AppCompatActivity() {
                     .databaseBuilder(applicationContext, TalanaDatabase::class.java, "usuarios")
                     .build()
                 val userdao: UserDao = room1.userDao()
-                userdao.getUsers(email, password)
-               // val login = user.room.userDao().getUsers(email, password)
-                val i = Intent(applicationContext, HomeActivity::class.java)
-                Toast.makeText(applicationContext, "Todo ok ", Toast.LENGTH_LONG).show()
-                startActivity(i)
-
+               val a = userdao.getUsers(email, password)
+                if (a !=null) {
+                    val i = Intent(applicationContext, HomeActivity::class.java)
+                    Toast.makeText(applicationContext, "Bienvenido!!", Toast.LENGTH_LONG).show()
+                    startActivity(i)
+                }
+                else {
+                    Toast.makeText(applicationContext, "Sus credenciales no son las correctas", Toast.LENGTH_LONG).show()
+                }
             } else {
                 Toast.makeText(applicationContext, "Ingrese sus credenciales", Toast.LENGTH_LONG).show()
             }

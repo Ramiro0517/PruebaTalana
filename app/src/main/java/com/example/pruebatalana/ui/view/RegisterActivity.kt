@@ -39,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                     .databaseBuilder(applicationContext, TalanaDatabase::class.java, "usuarios")
                     .build()
                 val userdao: UserDao = room1.userDao()
+              //  userdao.deleteAll()
                 userdao.insert(UserEntity(0, email, password))
                 val i = Intent(applicationContext, MainActivity::class.java)
                 startActivity(i)
