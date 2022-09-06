@@ -24,13 +24,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(registerBinding.root)
 
         registerBinding.btnRegisterBack.setOnClickListener {
-            login()
+            register()
         }
     }
-
-
-
-    private fun login() {
+    private fun register() {
         lifecycleScope.launch {
             val email = registerBinding.edtRegisterUsuario.text.toString()
             val password = registerBinding.edtRegisterPassword.text.toString()
@@ -42,10 +39,8 @@ class RegisterActivity : AppCompatActivity() {
               //  userdao.deleteAll()
                 userdao.insert(UserEntity(0, email, password))
                 val i = Intent(applicationContext, MainActivity::class.java)
+                Toast.makeText(applicationContext, "su usuario fue creado", Toast.LENGTH_SHORT).show()
                 startActivity(i)
-                //val createUser = UserEntity(0,email,password)
-                //user.room1.userDao().insert(createUser)
-
             } else {
                 Toast.makeText(applicationContext, "el formulario no es valido", Toast.LENGTH_SHORT).show()
             }
